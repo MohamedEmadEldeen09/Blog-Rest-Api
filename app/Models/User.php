@@ -45,4 +45,24 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function channels () {
+        $this->hasMany(Channel::class);
+    }
+
+    public function blogs () {
+        $this->hasMany(Blog::class);
+    }
+
+    public function image () {
+        $this->morphOne(Image::class, "imageable");
+    }
+
+    public function likes () {
+        $this->hasMany(Like::class);
+    }
+
+    public function suscribedChannels () {
+        $this->belongsToMany(Channel::class)->withTimestamps();
+    }
 }
