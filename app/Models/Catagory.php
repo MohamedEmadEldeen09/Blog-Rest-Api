@@ -11,6 +11,6 @@ class Catagory extends Model
     use HasFactory;
 
     public function blogs () {
-        $this->hasMany(Blog::class);
+        return $this->hasMany(Blog::class);
     }
 }

@@ -13,22 +13,22 @@ class Blog extends Model
     protected $guarded = [];
 
     public function author () {
-        $this->belongsTo(User::class, "user_id");
+        return $this->belongsTo(User::class, "user_id");
     }
     
     public function catagory () {
-        $this->belongsTo(Catagory::class);
+        return $this->belongsTo(Catagory::class);
     }
 
     public function likes () {
-        $this->hasMany(Like::class);
+        return $this->hasMany(Like::class);
     }
 
     public function comments () {
-        $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 
     public function images () {
-        $this->morphMany(Image::class, 'imageable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

@@ -11,10 +11,14 @@ class Channel extends Model
     use HasFactory;
 
     public function owner () {
-        $this->hasOne(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function subscribers () {
-        $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    public function blogs () {
+        return $this->hasMany(Blog::class);
     }
 }

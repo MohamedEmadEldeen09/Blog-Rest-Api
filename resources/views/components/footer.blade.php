@@ -1,1 +1,0 @@
-<footer>"Todo app created by mohamed emad 2025."</footer>

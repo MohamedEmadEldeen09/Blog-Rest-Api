@@ -46,23 +46,27 @@ class User extends Authenticatable
         ];
     }
 
-    public function channels () {
-        $this->hasMany(Channel::class);
+    public function ownChannels () {
+        return $this->hasMany(Channel::class);
     }
 
     public function blogs () {
-        $this->hasMany(Blog::class);
+        return $this->hasMany(Blog::class);
     }
 
     public function image () {
-        $this->morphOne(Image::class, "imageable");
-    }
-
-    public function likes () {
-        $this->hasMany(Like::class);
+        return $this->morphOne(Image::class, "imageable");
     }
 
     public function suscribedChannels () {
-        $this->belongsToMany(Channel::class)->withTimestamps();
+        return $this->belongsToMany(Channel::class)->withTimestamps();
+    }
+
+    public function likes () {
+        return $this->hasMany(Like::class);
+    }
+
+    public function comments () {
+        return $this->hasMany(Comment::class);
     }
 }
