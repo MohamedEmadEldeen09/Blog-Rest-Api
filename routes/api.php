@@ -10,3 +10,6 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 /* all the blog app routes*/
 require __DIR__.'/blog.php';
+
+/* authentication routes */
+require __DIR__.'/auth.php';
