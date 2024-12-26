@@ -3,6 +3,11 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -24,5 +29,28 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        /* 
+        | custom the NotFoundHttpException exception for example when 
+        | you request to get a model that is not found in the database.
+        */
+        $exceptions->renderable(function (NotFoundHttpException $e, $request) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'message' => 'Record not found!'
+                ], 404);
+            }
+        });
+
+        /* 
+        | custom the UnauthorizedHttpException exception for example when 
+        | you not allowed to get access to a specific page or a model
+        | that it is forbidden to you.
+        */
+        $exceptions->renderable(function (AccessDeniedHttpException $e, $request) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'error' => 'UnAuthorized to make this action!',
+                ], 403);
+            }
+        });
     })->create();

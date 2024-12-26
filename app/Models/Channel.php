@@ -10,6 +10,8 @@ class Channel extends Model
     /** @use HasFactory<\Database\Factories\ChannelFactory> */
     use HasFactory;
 
+    protected $fillable = ['name', 'user_id'];
+    
     public function owner () {
         return $this->belongsTo(User::class, 'user_id');
     }

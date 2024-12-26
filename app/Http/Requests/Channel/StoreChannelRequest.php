@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Requests\Image;
+namespace App\Http\Requests\Channel;
 
-use App\Enums\ImageOwnerEnum;
+use App\Models\Channel;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rules\Enum;
 
-class StoreImageRequest extends FormRequest
+class StoreChannelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return request()->user()->can('create', Channel::class);
     }
 
     /**
@@ -26,9 +25,7 @@ class StoreImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imageable_type' => ['required', new Enum(ImageOwnerEnum::class)],           
-            'imageable_id'=> 'required|numeric',
-            'image' => 'required|image',
+            'name' => 'required|string|max:150|unique:channels,name',
         ];
     }
 

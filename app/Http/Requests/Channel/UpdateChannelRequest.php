@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Requests\Image;
+namespace App\Http\Requests\Channel;
 
-use App\Enums\ImageOwnerEnum;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rules\Enum;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 
-class StoreImageRequest extends FormRequest
+class UpdateChannelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return request()->user()->can('update', $this->channel);
     }
 
     /**
@@ -26,9 +26,7 @@ class StoreImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imageable_type' => ['required', new Enum(ImageOwnerEnum::class)],           
-            'imageable_id'=> 'required|numeric',
-            'image' => 'required|image',
+            "name" => "required|string|max:150|unique:channels,name",
         ];
     }
 

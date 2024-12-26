@@ -1,0 +1,4 @@
+DELETE  http://localhost:8000/api/channel/417
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 6|usi7EGC6dChbg6loteGO5Fh8wM7OOUdpIBDVUseBa7732faa

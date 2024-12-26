@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\Channel\ChannelResource;
+use App\Http\Resources\Image\ImageResource;
 use App\Http\Resources\User\UserResource;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -34,5 +36,7 @@ class AppServiceProvider extends ServiceProvider
 
         //to prevent data wrapping
         UserResource::withoutWrapping();
+        ChannelResource::withoutWrapping();
+        ImageResource::withoutWrapping();
     }
 }

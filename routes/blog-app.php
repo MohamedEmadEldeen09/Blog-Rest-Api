@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ImageController;
 use App\Models\Blog;
 use App\Models\Channel;
@@ -25,9 +26,11 @@ use Illuminate\Support\Facades\Route;
 //blog
 //Route::apiResource('blog', BlogController::class);
 
+/* channel */
+Route::apiResource('channel', ChannelController::class);
+
 //image
 //Route::apiResource('image', ImageController::class)->middleware(['throttle:50,1']);
-
 // Route::controller(ImageController::class)->middleware(['throttle:50,1'])
 //     ->group(function () {
 //         Route::get('/image/{id}', 'show')->name('image.show');

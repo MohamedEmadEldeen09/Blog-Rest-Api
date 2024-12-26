@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class InternalServerErrorMyException extends Exception
+class UnAuthorizedToMakeActionMyException extends Exception
 {
     public function __construct($errorMessage)
     {
@@ -13,10 +13,10 @@ class InternalServerErrorMyException extends Exception
 
     public function render(){
         return response()->json([
-            'message' => 'server error!',
-            'error' => [
+            'error' => 'UnAuthorized to make this action!',
+            'details' => [
                 "message" => $this->message
             ] 
-        ], 500);
+        ], 403);
     }
 }
