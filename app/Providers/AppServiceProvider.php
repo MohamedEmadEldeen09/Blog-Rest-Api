@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\User\UserResource;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
@@ -30,5 +31,8 @@ class AppServiceProvider extends ServiceProvider
             'user' => "App\Models\User",
             'blog' => "App\Models\Blog",
         ]);
+
+        //to prevent data wrapping
+        UserResource::withoutWrapping();
     }
 }

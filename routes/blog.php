@@ -38,9 +38,11 @@ use Illuminate\Support\Facades\Route;
 // );
 
 //seed the db -->> done
-//blog crud + search + filter
-//image crud -->> sone
-//customize the authentiction 
-//authorization for the blog -->> policy
-//testig endPoints
+//customize the authentiction --> done
 //handle erros -->> done
+//image crud -->> done
+
+//blog crud + search + filter
+//channel crud
+//authorization for the blog using policy
+//testig endPoints

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\User\UserResource;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -34,8 +35,14 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        $token = $user->createToken('token for' . $user->email)->plainTextToken;
 
-        return response()->noContent();
+        $resData = [
+            "message" => "user has been registered successfully!",
+            "token" => $token,
+            "user" => new UserResource($user)
+        ];
+
+        return response($resData, 201);
     }
 }
