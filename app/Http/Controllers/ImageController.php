@@ -20,7 +20,7 @@ class ImageController extends Controller
     public function store(StoreImageRequest $request)
     {
         $validatedData = $request->validated();
-
+        
         $image = $this->storeImageFor($validatedData, $this->usedDisk);
 
         return response([
@@ -30,11 +30,7 @@ class ImageController extends Controller
 
     public function show(string $id)
     {
-        try {
-            $image = Image::findOrFail($id);
-        } catch (\Throwable $th) {
-            throw new RecordNotFoundMyException();
-        }
+        $image = Image::findOrFail($id);
 
         return new ImageResource($image);
     }
@@ -48,6 +44,6 @@ class ImageController extends Controller
     public function destroy(string $id)
     {        
         $this->deleteImageFrom($id);
-        return response(null, 204); //204 means no content
+        return response(null, 204); 
     }
 }

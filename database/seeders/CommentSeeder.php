@@ -14,7 +14,14 @@ class CommentSeeder extends Seeder
      */
     public function run(): void
     {
+        /* seed demo comments */
+        $this->seedDemoComments();
+    }
+
+    public function seedDemoComments () : void
+    {
         $channels = Channel::all();
+        
         foreach ($channels as $channel) { 
             foreach ($channel->blogs() as $blog) {
                 foreach ($channel->subscribers() as $subscriber) {

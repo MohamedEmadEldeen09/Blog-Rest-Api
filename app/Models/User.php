@@ -47,6 +47,12 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    /* delete the user profile image before deleting the user */
+    public function delete () {
+        $this->image()->delete();
+        return parent::delete();
+    }
+
     public function ownChannels () {
         return $this->hasMany(Channel::class);
     }

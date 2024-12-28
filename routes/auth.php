@@ -6,7 +6,13 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Resources\User\UserResource;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+    return new UserResource($request->user());
+});
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware(['guest', 'is-unauth', 'throttle:6,1'])

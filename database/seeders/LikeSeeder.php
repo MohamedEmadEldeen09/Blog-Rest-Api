@@ -16,8 +16,15 @@ class LikeSeeder extends Seeder
      */
     public function run(): void
     {        
-        $channels = Channel::all();
-        foreach ($channels as $channel) { 
+        /* Seed demo likes. */
+        $this->seedDemoLikes();
+    }
+
+    public function seedDemoLikes(): void
+    {
+        $channels = Channel::all('id');
+
+        foreach ($channels as $channel) {
             foreach ($channel->blogs() as $blog) {
                 foreach ($channel->subscribers() as $subscriber) {
                     Like::factory(1)->create([

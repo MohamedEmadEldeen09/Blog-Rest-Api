@@ -1,0 +1,3 @@
+GET http://localhost:8000/api/user/dashboard/channels
+//Content-Type: application/json
+Accept: application/json

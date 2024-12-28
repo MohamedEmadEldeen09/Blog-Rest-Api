@@ -1,13 +1,11 @@
 <?php
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Symfony\Component\Finder\Exception\AccessDeniedException;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -24,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
             'is-unauth' => \App\Http\Middleware\MyRedirectIfUserAuthenticated::class,
+            'is-admin' => \App\Http\Middleware\IsAdminMiddlewre::class,
         ]);
 
         //
@@ -42,7 +41,7 @@ return Application::configure(basePath: dirname(__DIR__))
         });
 
         /* 
-        | custom the UnauthorizedHttpException exception for example when 
+        | custom the AccessDeniedHttpException exception for example when 
         | you not allowed to get access to a specific page or a model
         | that it is forbidden to you.
         */

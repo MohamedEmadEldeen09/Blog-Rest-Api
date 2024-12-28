@@ -10,38 +10,52 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
 class ImageSeeder extends Seeder
-{
+{  
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $faker = Faker::Create();
-
         /* insert random profile image for each user */
-        // $users = User::all();
-        // foreach ($users as $user) {
-        //     $user->image()->create([
-        //         "url" => $faker->imageUrl(100, 100, $user->name, true)
-        //     ]);
-        // }
+        //$this->seedUsersProfileImage();
 
-        /* insert 2 random images for each blog */
-        $blogs = Blog::all();
+        /* insert random blog images for each blog */
+        //$this->seedBlogsImages();
+
+        /* to rest or remove all the records for testing purposes */
+        $this->removeAllTheRecords();
+    }
+
+    /* delete all the records */
+    public function removeAllTheRecords () {
+        $imagesIds = Image::pluck('id');
+        Image::destroy($imagesIds);
+    }
+
+    /* insert random profile image for each user */
+    public function seedUsersProfileImage () {
+        $faker = Faker::Create();
+        
+        $users = User::all('id');
+        foreach ($users as $user) {
+            $user->image()->create([
+                "url" => $faker->imageUrl(100, 100, $user->name, true)
+            ]);
+        }
+    }
+
+    /* insert random blog images for each blog */
+    public function seedBlogsImages () {
+        $faker = Faker::Create();
+        
+        $blogs = Blog::all('id');
         foreach ($blogs as $blog) {
-            for ($i=0; $i < 2; $i++) { 
+            /* insert 2 random images for each blog */
+            for ($i = 0; $i < 2; $i++) {
                 $blog->images()->create([
-                    "url" => $faker->imageUrl(640, 480, "$blog->title"."$i", true)
+                    "url" => $faker->imageUrl(640, 480, $blog->title, true)
                 ]);
             }
         }
-
-        /* to rest or remove all the records for testing purposes */
-        //$this->removeAllTheRecords();
-    }
-
-    public function removeAllTheRecords () {
-        $channelsIds = Image::pluck('id');
-        Image::destroy($channelsIds);
     }
 }

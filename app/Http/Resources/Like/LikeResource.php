@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Resources\Channel;
+namespace App\Http\Resources\Like;
 
-use App\Http\Resources\Blog\BlogResource;
+use App\Http\Resources\User\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ChannelResource extends JsonResource
+class LikeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +17,8 @@ class ChannelResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'created_at' =>$this->created_at->format('Y-m-d'),
-            'blogs' => BlogResource::collection($this->whenLoaded('blogs')),
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            'user' => $this->user->name,
         ];
     }
 }

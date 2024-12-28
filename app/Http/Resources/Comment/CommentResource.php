@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Channel;
+namespace App\Http\Resources\Comment;
 
-use App\Http\Resources\Blog\BlogResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ChannelResource extends JsonResource
+class CommentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +16,9 @@ class ChannelResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'created_at' =>$this->created_at->format('Y-m-d'),
-            'blogs' => BlogResource::collection($this->whenLoaded('blogs')),
+            'content' => $this->content,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            'user' => $this->user->name,
         ];
     }
 }

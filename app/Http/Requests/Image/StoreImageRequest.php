@@ -26,8 +26,8 @@ class StoreImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imageable_type' => ['required', new Enum(ImageOwnerEnum::class)],           
-            'imageable_id'=> 'required|numeric',
+            // 'imageable_type' => ['required', new Enum(ImageOwnerEnum::class)],           
+            // 'imageable_id'=> 'required|numeric',
             'image' => 'required|image',
         ];
     }
@@ -36,8 +36,7 @@ class StoreImageRequest extends FormRequest
         $errors = $validator->errors();
 
         $response = response()->json([
-            'message' => 'Invalid data send',
-            'details' => $errors->messages(),
+            'errors' => $errors->messages(),
         ], 422);
 
         throw new HttpResponseException($response);
