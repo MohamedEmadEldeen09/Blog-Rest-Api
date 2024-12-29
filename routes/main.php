@@ -55,9 +55,12 @@ Route::controller(ChannelSubscribtoinController::class)
     });
 
 /* blog */
+Route::get('/channel/{channel}/blog/trending', 
+        [SearchAndFilterController::class, 'trendingBlogs'])->name('channel.blog.trending');
 Route::scopeBindings()->group(function () {
         Route::apiResource('channel.blog', BlogController::class);
     });
+
 
 /* search and filter */
 Route::controller(SearchAndFilterController::class)
@@ -87,11 +90,13 @@ Route::controller(SearchAndFilterController::class)
 //authorization using policy -->> done
 //channel subscribtion -->> done
 //user dashboard -->> done
+//blog crud -->> done
+//search + filter -->> done
+
 
 //image crud 
-//blog crud
-//search + filter
-
+//blog actions -->> report a blog to the admin as a notificatoin trigered by an event
 //testig endPoints
-//admin layer with abilities 
+//admin layer with abilities muti auth
+//solve pagination problem that it is not showing in the resource response
 

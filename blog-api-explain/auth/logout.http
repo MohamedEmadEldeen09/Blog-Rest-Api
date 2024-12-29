@@ -1,4 +1,0 @@
-POST http://localhost:8000/api/logout
-Content-Type: application/json
-Accept: application/json
-Authorization: Bearer 4|ySMWmOUYcHNRVPlmOG1BIzwlk6eZWoiOYLeXSdNTca5a02a4

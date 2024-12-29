@@ -47,7 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    /* delete the user profile image before deleting the user */
+    /* delete the user profile image when deleting the user */
     public function delete () {
         $this->image()->delete();
         return parent::delete();

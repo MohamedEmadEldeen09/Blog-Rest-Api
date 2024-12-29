@@ -25,7 +25,7 @@ class UserProfileController extends Controller
     public function uplaodProfileImage(StoreImageRequest $request)
     {
         $validatedData = $request->validated();
-
+        dd($validatedData);
         $validatedData['imageable_type'] = 'user';
 
         $image = $this->storeImageFor($validatedData, $this->usedDisk);

@@ -15,34 +15,34 @@ class CatagorySeeder extends Seeder
     {
         $categories = [
             [
-                "name" => "History"
+                "name" => "history"
             ],
             [
-                "name" => "Science"
+                "name" => "science"
             ],
             [
-                "name" => "Eduacatoin"
+                "name" => "eduacatoin"
             ],
             [
-                "name" => "Sport"
+                "name" => "sport"
             ],
             [
-                "name" => "Computer Science"
+                "name" => "computer Science"
             ],
             [
-                "name" => "Romance"
+                "name" => "romance"
             ],
             [
-                "name" => "News"
+                "name" => "news"
             ],
             [
-                "name" => "Economy"
+                "name" => "economy"
             ],
             [
-                "name" => "Fasoin"
+                "name" => "fasoin"
             ],
             [
-                "name" => "Travel"
+                "name" => "travel"
             ],
         ];
 

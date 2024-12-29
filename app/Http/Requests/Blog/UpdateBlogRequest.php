@@ -25,12 +25,9 @@ class UpdateBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['sometimes', 'string', 'max:255'],
+            'title' => ['sometimes', 'string', 'min:12', 'max:255'],
             'content' => ['sometimes', 'string'],
-            'catagory_id' => ['sometimes', 'integer', 'exists:catagories,id'],
-            //'images' => ['required', 'array', 'sometimes'],
-            //'images.*' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            //'image' => ['sometimes', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'catagory_id' => ['sometimes', 'integer', 'exists:catagories,id']
         ];
     }
 

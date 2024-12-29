@@ -15,6 +15,7 @@ class StoreImageRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        dd(request()->all());
         return true;
     }
 
@@ -26,8 +27,6 @@ class StoreImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'imageable_type' => ['required', new Enum(ImageOwnerEnum::class)],           
-            // 'imageable_id'=> 'required|numeric',
             'image' => 'required|image',
         ];
     }

@@ -23,8 +23,8 @@ class CommentSeeder extends Seeder
         $channels = Channel::all();
         
         foreach ($channels as $channel) { 
-            foreach ($channel->blogs() as $blog) {
-                foreach ($channel->subscribers() as $subscriber) {
+            foreach ($channel->blogs as $blog) {
+                foreach ($channel->subscribers as $subscriber) {
                     Comment::factory(1)->create([
                         "user_id" => $subscriber->id,
                         "blog_id" => $blog->id

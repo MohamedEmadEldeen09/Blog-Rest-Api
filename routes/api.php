@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php';
 
 /* all the blog app routes*/
-require __DIR__.'/blog-app.php';
+require __DIR__.'/main.php';
 
 /* the admin routes */
 require __DIR__.'/admin.php';

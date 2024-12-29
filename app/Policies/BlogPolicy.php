@@ -37,8 +37,6 @@ class BlogPolicy
             return true;
         }
 
-        $user = request()->user('sanctum');
-
         /* 
         | second case if the user logged in so he can see only the blogs that is 
         | in the main app channel and the channel that he subscribed to
@@ -56,8 +54,6 @@ class BlogPolicy
         if($channel->name === AppConstantsEnum::MAIN_APP_CHANNEL_NAME->value){    
             return true;
         }
-
-        $user = request()->user('sanctum');
 
         return $channel->subscribers()->where('user_id', $user->id)->exists()
             ? true
@@ -93,8 +89,6 @@ class BlogPolicy
      */
     public function delete(User $user, Blog $blog): bool
     {
-        $user = request()->user('sanctum');
-
         return $blog->user_id === $user->id
             ? true
             : throw new UnAuthorizedToMakeActionMyException('You must be the author of the blog to delete it.');

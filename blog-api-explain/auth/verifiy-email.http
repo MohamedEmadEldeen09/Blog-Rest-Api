@@ -1,4 +1,0 @@
-GET  http://localhost:8000/api/verify-email/67/73ac5dcdbc8920c79da6ac023dad34f08809b8ac?expires=1735187317&signature=b8f49fc96ebcbb970233592f74a398e1b61b5792869b50cecf8e017cbe10e451
-Content-Type: application/json
-Accept: application/json
-Authorization: Bearer 4|ySMWmOUYcHNRVPlmOG1BIzwlk6eZWoiOYLeXSdNTca5a02a4

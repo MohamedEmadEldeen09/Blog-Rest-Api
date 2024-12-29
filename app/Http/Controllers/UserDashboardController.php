@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Blog\BlogResource;
-use App\Http\Resources\Channel\ChannelCollection;
 use App\Http\Resources\Channel\ChannelResource;
 
 class UserDashboardController extends Controller
@@ -12,7 +11,7 @@ class UserDashboardController extends Controller
     public function myOwnChannels () {
         $user = request()->user('sanctum');
 
-        $ownChannels =  new ChannelCollection($user->ownChannels()->paginate()); 
+        $ownChannels =  ChannelResource::collection($user->ownChannels()->paginate()); 
         
         return response()->json($ownChannels, 200);
     }
@@ -21,7 +20,7 @@ class UserDashboardController extends Controller
     public function mySusbcribedChannels () {
         $user = request()->user('sanctum');
 
-        $subscribedChannels = new ChannelCollection($user->suscribedChannels()->paginate());
+        $subscribedChannels = ChannelResource::collection($user->suscribedChannels()->paginate());
             
         return response()->json($subscribedChannels, 200);
     }

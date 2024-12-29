@@ -2,12 +2,15 @@
 
 namespace App\Http\Resources\Blog;
 
+use App\Http\Resources\Catagory\CatagoryResource;
 use App\Http\Resources\Channel\ChannelResource;
 use App\Http\Resources\Comment\CommentResource;
 use App\Http\Resources\Image\ImageResource;
 use App\Http\Resources\Like\LikeResource;
+use App\Http\Resources\User\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Route;
 
 class BlogResource extends JsonResource
 {
@@ -18,15 +21,70 @@ class BlogResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        /* overiew routes */
+        $isPreviewAllBlogs = Route::currentRouteName() === "channel.blog.index";
+        $isPreviewTrendingBlogs = Route::currentRouteName() === "channel.blog.trending";
+        if($isPreviewAllBlogs || $isPreviewTrendingBlogs){
+            return $this->blogPreviewResource();
+        }
+
+        /* details routes */
+        $isShowDetailedBlog = Route::currentRouteName() === "channel.blog.show";
+        if($isShowDetailedBlog){
+            return $this->blogDetailsResource();
+        }
+    }
+
+    /* when show the blog details -->> route = channel.blog.show */
+    public function blogDetailsResource () {
         return [
             'id' => $this->id,
+
             'title' => $this->title,
+
             'content' => $this->content,
+
             'created_at' => $this->created_at->format('Y-m-d'),
-            'user' => $this->whenLoaded('author', $this->author->name),
+
+            'user' => $this->whenLoaded('author', new UserResource($this->author)),
+
+            'catagory' => new CatagoryResource($this->catagory),
+
             'images' => ImageResource::collection($this->whenLoaded('images')),
+
+            'likes_count' => $this->likes()->count(),
+
             'likes' => LikeResource::collection($this->whenLoaded('likes')),
+
             'comments' => CommentResource::collection($this->whenLoaded('comments')),
+
+            'channel' => new ChannelResource($this->whenLoaded('channel'))
+        ];
+    }
+
+    /**
+     * when show the overview about each blog 
+     *  -->> route = channel.blog.index
+     *  -->> route = blohs.trending 
+     **/
+    public function blogPreviewResource () {
+        return [
+            'id' => $this->id,
+
+            'title' => $this->title,
+
+            'created_at' => $this->created_at->format('Y-m-d'),
+
+            'user' => $this->whenLoaded('author', $this->author->name),
+
+            'catagory' => new CatagoryResource($this->catagory),
+
+            'image' => new ImageResource ($this->images()->first()),
+
+            'likes_count' => $this->likes()->count(),
+
+            'comments' => $this->comments()->count(),
+
             'channel' => new ChannelResource($this->whenLoaded('channel'))
         ];
     }

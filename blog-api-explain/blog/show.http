@@ -1,4 +1,0 @@
-GET http://localhost:8000/api/channel/427/blog/26992
-Content-Type: application/json
-Accept: application/json
-Authorization: Bearer 7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1

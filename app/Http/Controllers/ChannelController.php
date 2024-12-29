@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\InternalServerErrorMyException;
-use App\Exceptions\RecordNotFoundMyException;
 use App\Http\Requests\Channel\StoreChannelRequest;
 use App\Http\Requests\Channel\UpdateChannelRequest;
 use App\Http\Resources\Channel\ChannelResource;
@@ -12,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Validator;
 
 class ChannelController extends Controller implements HasMiddleware
 {
@@ -23,16 +21,29 @@ class ChannelController extends Controller implements HasMiddleware
         ];
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        try {
-            $allChannels = ChannelResource::collection(Channel::paginate(6));
-            return response()->json($allChannels, 200);
+        $channel_name = $request->query('channel_name');
 
-        } catch (\Throwable $th) {
-            /* in case of unexcepected error happened */
-            throw new InternalServerErrorMyException('sonething went wrong!, please try again later');
+        /* if there is no query search parameters */
+        if(! $channel_name){
+            $channels = ChannelResource::collection(Channel::paginate(4));
+            return response()->json([
+                'channels' =>$channels
+            ], 200);
         }
+        
+         /* if search parameters exist */
+        $channels = ChannelResource::collection(
+            Channel::filter(request(['channel_name']))
+                ->paginate(4)->withQueryString());
+        
+        return response()->json([
+            'channels' => $channels,
+            'filters' => [
+                'channel_name' => $request->query('channel_name'),
+            ] 
+        ], 200);
     }
 
     public function store(StoreChannelRequest $request)
@@ -63,38 +74,28 @@ class ChannelController extends Controller implements HasMiddleware
 
     public function update(UpdateChannelRequest $request, Channel $channel)
     {  
-        try {
-            /* get the validated data */
-            $valdated = $request->validated();
+        /* get the validated data */
+        $valdated = $request->validated();
 
-            /* save to db */
-            $channel->update([
-                'name' => $valdated['name'],
-            ]);
+        /* save to db */
+        $channel->update([
+            'name' => $valdated['name'],
+        ]);
 
-            /* return response */
-            return response()->json(new ChannelResource($channel), 201);
-
-        } catch (\Throwable $th) {
-            throw new InternalServerErrorMyException('sonething went wrong!, please try again later');
-        }
+        /* return response */
+        return response()->json(new ChannelResource($channel), 201);
     }
 
     public function destroy(Channel $channel)
     {
         /* authorization is this user can delete this channel */    
-        Gate::authorize('delete', $channel);
+        //Gate::authorize('delete', $channel);
+        request()->user('sanctum')->can('delete', $channel);
 
-        try {
-            /* delete the channel */
-            $channel->delete();
+        /* delete the channel */
+        $channel->delete();
 
-            /* return response */
-            return response()->json(null, 204);
-
-        } catch (\Throwable $th) {
-            /* in case of unexcepected error happened */
-            throw new InternalServerErrorMyException('sonething went wrong!, please try again later');
-        }
+        /* return response */
+        return response()->json(null, 204);
     }
 }

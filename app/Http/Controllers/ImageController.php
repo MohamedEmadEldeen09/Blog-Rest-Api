@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
+    /*
     use StoreImageTrait, DeleteImageTrait;
 
     protected $usedDisk = 'public';
@@ -46,4 +47,5 @@ class ImageController extends Controller
         $this->deleteImageFrom($id);
         return response(null, 204); 
     }
+    */
 }

@@ -51,25 +51,22 @@ trait StoreImageTrait
     }
 
     private function storeImageForBlog($data, $disk){
-        $item = Blog::findOrFail($data['imageable_id']);
-
         try {
+            $blog = Blog::findOrFail($data['blog']);
+
             $image = $data['image'];
 
-            $folderPath = 'blog/'.$data['imageable_id'];
+            $folderPath = 'blog/'.  $blog->id;
 
             //store in the storage
             $path = $image->store($folderPath, $disk);
 
             //store in the database
-            $image = $item->images()->create([
+            $blog->images()->create([
                 "url" => $path,
-            ]);   
-            
+            ]);
         } catch (\Throwable $th) {
             throw new InternalServerErrorMyException($th->getMessage());
         }
-
-        return $image;
     }
 }
