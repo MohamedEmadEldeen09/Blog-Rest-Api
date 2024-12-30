@@ -4,24 +4,31 @@ namespace App\Policies;
 
 use App\Enums\AppConstantsEnum;
 use App\Exceptions\UnAuthorizedToMakeActionMyException;
+use App\Models\Admin;
 use App\Models\Blog;
 use App\Models\Channel;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Database\Eloquent\Model;
 
 class BlogPolicy
 {
-    /**
-     * Admin Layer
-     * if the user is the main app channel ( admin )
-     **/
-    public function before(User $user, $ability)
-    {
-        $user = request()->user('sanctum');
+    /* check if the user type is admin. */
+    public function before(?Model $model, $ability)
+    {   
+        /**
+         * if the user is admin he can do anything except 
+         * the ability of updating a blog
+         */
+        if($model && $model->isAdmin()){
+            if($ability == 'update'){
+                throw throw new UnAuthorizedToMakeActionMyException('Even if you are an admin you can not update the user blog.');
+            }
 
-        if($user->email === AppConstantsEnum::MAIN_APP_CHANNEL_EMAIL->value){
             return true;
         }
+
+        return null;
     }
 
     /**

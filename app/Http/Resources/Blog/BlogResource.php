@@ -24,15 +24,20 @@ class BlogResource extends JsonResource
         /* overiew routes */
         $isPreviewAllBlogs = Route::currentRouteName() === "channel.blog.index";
         $isPreviewTrendingBlogs = Route::currentRouteName() === "channel.blog.trending";
-        if($isPreviewAllBlogs || $isPreviewTrendingBlogs){
+        $isPreviewDashboardBlogs = Route::currentRouteName() === "dashboard.blogs";
+
+        if($isPreviewAllBlogs || $isPreviewTrendingBlogs || $isPreviewDashboardBlogs){
             return $this->blogPreviewResource();
         }
 
         /* details routes */
-        $isShowDetailedBlog = Route::currentRouteName() === "channel.blog.show";
-        if($isShowDetailedBlog){
-            return $this->blogDetailsResource();
-        }
+        // $isShowDetailedBlog = Route::currentRouteName() === "channel.blog.show";
+        // if($isShowDetailedBlog){
+        //     return $this->blogDetailsResource();
+        // }
+
+        /* details routes */
+        return $this->blogDetailsResource();
     }
 
     /* when show the blog details -->> route = channel.blog.show */
@@ -46,19 +51,19 @@ class BlogResource extends JsonResource
 
             'created_at' => $this->created_at->format('Y-m-d'),
 
-            'user' => $this->whenLoaded('author', new UserResource($this->author)),
+            'author' => new UserResource($this->author),
 
             'catagory' => new CatagoryResource($this->catagory),
 
-            'images' => ImageResource::collection($this->whenLoaded('images')),
+            'images' => ImageResource::collection($this->images),
 
             'likes_count' => $this->likes()->count(),
 
-            'likes' => LikeResource::collection($this->whenLoaded('likes')),
+            'likes' => LikeResource::collection($this->likes),
 
-            'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'comments' => CommentResource::collection($this->comments),
 
-            'channel' => new ChannelResource($this->whenLoaded('channel'))
+            'channel' => new ChannelResource($this->channel)
         ];
     }
 
@@ -79,7 +84,7 @@ class BlogResource extends JsonResource
 
             'catagory' => new CatagoryResource($this->catagory),
 
-            'image' => new ImageResource ($this->images()->first()),
+            'preview_image' => new ImageResource ($this->images()->first()),
 
             'likes_count' => $this->likes()->count(),
 

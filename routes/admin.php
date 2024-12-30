@@ -1,23 +1,28 @@
 <?php
 
-use App\Http\Controllers\Admin\MainAppChannelAdminController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\MainAppActionsController;
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin', fn () => response('hello admin'))
-        ->middleware(['auth:sanctum', 'is-admin']);
+/* admin login */
+Route::post('/admin/login', [AuthenticatedSessionController::class, 'store'])
+    ->middleware(['guest', 'is-unauth', 'throttle:6,1'])
+    ->name('admin.login');
 
-Route::middleware(['auth:sanctum', 'is-admin'])
-    ->prefix('admin')
-    ->group(function () {
-        Route::get('/', fn () => response('hello admin'));
+/* main functionality */
+Route::middleware('auth:admin-api')->prefix('admin')->group(function () {
+        /* welcome route to test */
+        Route::get('/', fn () => response('Hello '. request()->user('sanctum')->name));
 
-        Route::controller(MainAppChannelAdminController::class)
-        ->prefix('channel')
-        ->group(function () {
-            Route::get('/{channel}/subscribers', 'channelSubscribers')
-                ->name('admin.channel.subscribers');
-        });
+        /* admin logout */
+        Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+            ->name('admin.logout');
+
+        /* */
+        Route::controller(MainAppActionsController::class)->prefix('channel')
+            ->group(function () {
+                
+            });
     }
 );
 

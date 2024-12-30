@@ -17,7 +17,7 @@ class ChannelController extends Controller implements HasMiddleware
     public static function middleware()
     {
         return [
-            new Middleware('auth:sanctum', except: ['index', 'show']),
+            new Middleware('auth:sanctum', only: ['store', 'update', 'destroy']),
         ];
     }
 
@@ -89,8 +89,8 @@ class ChannelController extends Controller implements HasMiddleware
     public function destroy(Channel $channel)
     {
         /* authorization is this user can delete this channel */    
-        //Gate::authorize('delete', $channel);
-        request()->user('sanctum')->can('delete', $channel);
+        Gate::authorize('delete', $channel);
+        //request()->user('sanctum')->can('delete', $channel);
 
         /* delete the channel */
         $channel->delete();

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -22,7 +21,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
             'is-unauth' => \App\Http\Middleware\MyRedirectIfUserAuthenticated::class,
-            'is-admin' => \App\Http\Middleware\IsAdminMiddlewre::class,
         ]);
 
         //

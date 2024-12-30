@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChannelController;
-use App\Http\Controllers\ChannelSubscribtoin;
 use App\Http\Controllers\ChannelSubscribtoinController;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\SearchAndFilterController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserProfileController;
@@ -15,9 +13,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/test-api/channel/{channel}', function (Channel $channel) {
-//     return UserResource::collection($channel->subscribers);
-// });
+Route::get('/test', function (Channel $channel) {
+    return response(['message' => 'welcome '. request()->user('sanctum')->name]);
+})->middleware(['auth:user']);
 
 /* user profile */
 Route::controller(UserProfileController::class)
@@ -30,6 +28,7 @@ Route::controller(UserProfileController::class)
         Route::post('/image/{image}', 'deleteProfileImage')->name('profile.image-delete');
     });
 
+
 /* user dashboard */
 Route::controller(UserDashboardController::class)
     ->prefix('/user/dashboard')
@@ -40,8 +39,10 @@ Route::controller(UserDashboardController::class)
         Route::get('/blogs', 'myBlogs')->name('dashboard.blogs');
     });
 
+
 /* channel */
 Route::apiResource('channel', ChannelController::class);
+
 
 /* channel subscribtion */
 Route::controller(ChannelSubscribtoinController::class)
@@ -54,9 +55,8 @@ Route::controller(ChannelSubscribtoinController::class)
             ->middleware('can:unsubscribe,channel')->name('channel.unsubscribe');
     });
 
+
 /* blog */
-Route::get('/channel/{channel}/blog/trending', 
-        [SearchAndFilterController::class, 'trendingBlogs'])->name('channel.blog.trending');
 Route::scopeBindings()->group(function () {
         Route::apiResource('channel.blog', BlogController::class);
     });
@@ -66,21 +66,10 @@ Route::scopeBindings()->group(function () {
 Route::controller(SearchAndFilterController::class)
     ->prefix('search')
     ->group(function () {
-
+        Route::get('/channel/{channel}/blog/trending', 'trendingBlogs')
+            ->name('channel.blog.trending');
     });
 
-
-
-//image
-//Route::apiResource('image', ImageController::class)->middleware(['throttle:50,1']);
-// Route::controller(ImageController::class)->middleware(['throttle:50,1'])
-//     ->group(function () {
-//         Route::get('/image/{id}', 'show')->name('image.show');
-//         Route::post('/image', 'store')->name('image.store');
-//         Route::put('/image/{id}', 'update')->name('image.update');
-//         Route::delete('/image/{id}', 'destroy')->name('image.destroy');
-//     }
-// );
 
 
 //seed the db -->> done
@@ -92,11 +81,12 @@ Route::controller(SearchAndFilterController::class)
 //user dashboard -->> done
 //blog crud -->> done
 //search + filter -->> done
+//admin layer with abilities muti auth -->> done
 
 
 //image crud 
 //blog actions -->> report a blog to the admin as a notificatoin trigered by an event
+//send notificatoin the channel subscribers throght email when new blog created 
 //testig endPoints
-//admin layer with abilities muti auth
 //solve pagination problem that it is not showing in the resource response
 

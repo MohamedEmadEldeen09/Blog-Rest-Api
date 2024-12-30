@@ -47,6 +47,14 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    /**
+     * to distinguish this user whether he is an admin or a user 
+     * through an API request.
+     **/
+    public function isAdmin (): bool {
+        return false;
+    }
+
     /* delete the user profile image when deleting the user */
     public function delete () {
         $this->image()->delete();

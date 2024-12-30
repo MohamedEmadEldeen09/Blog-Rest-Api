@@ -26,7 +26,7 @@ class BlogController extends Controller implements HasMiddleware
     public static function middleware()
     {
         return [
-            new Middleware('auth:sanctum', only: ['store', 'update', 'destroy'])
+            new Middleware('auth:sanctum', only: ['store', 'update', 'destroy']),
         ];
     }
 
@@ -36,8 +36,8 @@ class BlogController extends Controller implements HasMiddleware
     public function index(Channel $channel)
     {    
         /* check if the user is authorized to view all the channel blogs */
-        //Gate::authorize('viewAny', [Blog::class, $channel]);    
-        request()->user('sanctum')->can('viewAny', [Blog::class, $channel]);
+        Gate::authorize('viewAny', [Blog::class, $channel]);    
+        //request()->user('sanctum')->can('viewAny', [Blog::class, $channel]);
 
         $catagory_name = request()->query('catagory_name');
         $blog_search = request()->query('blog_search');
@@ -85,9 +85,9 @@ class BlogController extends Controller implements HasMiddleware
 
         /* save the blog images */
          /* save the blog images */
-        foreach ($validated['images'] as $image) {
-            $this->uplaodBlogImage($blog, $image);
-        }
+        // foreach ($validated['images'] as $image) {
+        //     $this->uplaodBlogImage($blog, $image);
+        // }
 
         return response()->json([
             'message' => 'Blog created successfully.',
@@ -101,8 +101,8 @@ class BlogController extends Controller implements HasMiddleware
     public function show(Channel $channel, Blog $blog)
     {
         /* check if the user is authorized to view the blog */
-        //Gate::authorize('view', [Blog::class, $blog, $channel]);
-        request()->user('sanctum')->can('view', [Blog::class, $blog, $channel]);
+        Gate::authorize('view', [Blog::class, $blog, $channel]);
+        //request()->user('sanctum')->can('view', [Blog::class, $blog, $channel]);
 
         return new BlogResource(
             $blog->with(['author', 'images', 'likes', 'comments'])->find($blog->id)
@@ -132,8 +132,8 @@ class BlogController extends Controller implements HasMiddleware
     public function destroy( Channel $channel, Blog $blog)
     {
         /* check if the user is authorized to delete the blog */
-        //Gate::authorize('delete', $blog);
-        request()->user('sanctum')->can('delete', $blog);
+        Gate::authorize('delete', $blog);
+        //request()->user('sanctum')->can('delete', $blog);
 
         $blog->delete();
 

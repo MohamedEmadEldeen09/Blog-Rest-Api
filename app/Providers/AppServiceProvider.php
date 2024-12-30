@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::enforceMorphMap([
             'user' => "App\Models\User",
             'blog' => "App\Models\Blog",
+            'admin' => "App\Models\Admin",
         ]);
 
         //to prevent data wrapping
