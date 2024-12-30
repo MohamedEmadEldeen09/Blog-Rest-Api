@@ -13,9 +13,9 @@ class UnAuthorizedToMakeActionMyException extends Exception
 
     public function render(){
         return response()->json([
-            'error' => 'UnAuthorized to make this action!',
+            'message' => 'UnAuthorized to make this action!',
             'details' => [
-                "message" => $this->message
+                "error" => $this->message
             ] 
         ], 403);
     }

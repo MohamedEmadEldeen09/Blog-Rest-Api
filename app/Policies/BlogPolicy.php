@@ -62,6 +62,10 @@ class BlogPolicy
             return true;
         }
 
+        if(! $user){
+            throw new UnAuthorizedToMakeActionMyException('Sign in to see the blog if you have access to it.');
+        }
+
         return $channel->subscribers()->where('user_id', $user->id)->exists()
             ? true
             : throw new UnAuthorizedToMakeActionMyException('You must be subscribed to the channel to view the blog.');

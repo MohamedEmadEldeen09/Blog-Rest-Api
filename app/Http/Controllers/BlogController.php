@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewBlogPublished;
+use App\Events\NewBlogPublishedEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Http\Requests\Blog\StoreBlogRequest;
@@ -88,6 +90,9 @@ class BlogController extends Controller implements HasMiddleware
         // foreach ($validated['images'] as $image) {
         //     $this->uplaodBlogImage($blog, $image);
         // }
+
+        /* send new blog published emails */
+        NewBlogPublishedEvent::dispatch($blog);
 
         return response()->json([
             'message' => 'Blog created successfully.',
