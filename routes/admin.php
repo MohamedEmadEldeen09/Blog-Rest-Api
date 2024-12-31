@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\MainAppActionsController;
+use App\Http\Controllers\Admin\CatagoryController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,11 +18,8 @@ Route::middleware('auth:admin-api')->prefix('admin')->group(function () {
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
             ->name('admin.logout');
 
-        /* */
-        Route::controller(MainAppActionsController::class)->prefix('channel')
-            ->group(function () {
-                
-            });
+        /* catagory CRUD operatoins only for admin */
+        Route::apiResource('catagory', CatagoryController::class);
     }
 );
 

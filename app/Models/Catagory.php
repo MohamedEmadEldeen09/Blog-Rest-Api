@@ -10,6 +10,8 @@ class Catagory extends Model
     /** @use HasFactory<\Database\Factories\CatagoryFactory> */
     use HasFactory;
 
+    protected $fillable= ['name'];
+    
     public function blogs () {
         return $this->hasMany(Blog::class);
     }
