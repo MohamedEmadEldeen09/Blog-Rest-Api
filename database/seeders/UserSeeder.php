@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
 
     /* seed fake users */
     public function seedFakeUsers () {
-        /* main user for the golbal channel */
+        /* main user for the main app channel */
         User::factory()->create([
             'name' => AppConstantsEnum::MAIN_APP_CHANNEL_NAME->value,
             'email' => AppConstantsEnum::MAIN_APP_CHANNEL_EMAIL->value,

@@ -38,7 +38,6 @@ class RegisteredUserController extends Controller
         $token = $user->createToken('token for' . $user->email)->plainTextToken;
 
         $resData = [
-            "message" => "user has been registered successfully!",
             "token" => $token,
             "user" => new UserResource($user)
         ];

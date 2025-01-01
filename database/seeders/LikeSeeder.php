@@ -18,7 +18,7 @@ class LikeSeeder extends Seeder
     public function run(): void
     {        
         /* Seed demo likes. */
-        //$this->seedDemoLikes();
+        $this->seedDemoLikes();
 
         /* make a blog as trending. */
         $this->seedMulitipleLikesOnABlog();
@@ -30,7 +30,10 @@ class LikeSeeder extends Seeder
 
         foreach ($channels as $channel) {
             foreach ($channel->blogs as $blog) {
-                foreach ($channel->subscribers as $subscriber) {
+                // just make one subscriber like the blog
+                $subscriber = $channel->subscribers()->first();
+
+                if($subscriber){
                     Like::factory(1)->create([
                         "user_id" => $subscriber->id,
                         "blog_id" => $blog->id
@@ -47,12 +50,17 @@ class LikeSeeder extends Seeder
         /* random blog on that channel */ 
         $blog = $mainChannel->blogs()->first();
 
-        /* random user */
-        $usersIds = User::limit(4)->pluck('id');
+        /* random users */
+        $users = $mainChannel->subscribers()->limit(8)->get();
 
-        foreach ($usersIds as $userId) {
+        foreach ($users as $user) {
+            /* to skip the users whose liked the blog */
+            if($blog->likes()->where('user_id', $user->id)->exists()){
+                continue;
+            }
+
             Like::factory(1)->create([
-                "user_id" => $userId,
+                "user_id" => $user->id,
                 "blog_id" => $blog->id
             ]);
         }

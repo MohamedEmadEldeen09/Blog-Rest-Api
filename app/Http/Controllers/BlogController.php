@@ -39,7 +39,6 @@ class BlogController extends Controller implements HasMiddleware
     {    
         /* check if the user is authorized to view all the channel blogs */
         Gate::authorize('viewAny', [Blog::class, $channel]);    
-        //request()->user('sanctum')->can('viewAny', [Blog::class, $channel]);
 
         $catagory_name = request()->query('catagory_name');
         $blog_search = request()->query('blog_search');
@@ -52,7 +51,7 @@ class BlogController extends Controller implements HasMiddleware
             ], 200);
         }
 
-        /* if search parameters exist */
+        /* if query search parameters exist */
         $blogs = $channel->blogs()
                 ->whereHas('catagory', function (Builder $query) use($catagory_name) {
                     $query->where('name', 'like', "%" . $catagory_name . "%");
@@ -107,11 +106,10 @@ class BlogController extends Controller implements HasMiddleware
     {
         /* check if the user is authorized to view the blog */
         Gate::authorize('view', [Blog::class, $blog, $channel]);
-        //request()->user('sanctum')->can('view', [Blog::class, $blog, $channel]);
 
-        return new BlogResource(
-            $blog->with(['author', 'images', 'likes', 'comments'])->find($blog->id)
-        );   
+        return response([
+            'blog' => new BlogResource($blog)
+        ], 200);
     }
 
     /**

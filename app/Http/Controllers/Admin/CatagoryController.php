@@ -26,7 +26,7 @@ class CatagoryController extends Controller
     {
         /* handle the validation and the errors */
         $validatedData = Validator::make($request->only('name'), [
-            'name' => 'required|string|min:5|max:50'
+            'name' => 'required|string|min:5|max:50|unique:catagories,name'
         ])->validate();
 
         /* store in db */
@@ -56,7 +56,7 @@ class CatagoryController extends Controller
     {
         /* handle the validation and the errors */
         $validatedData = Validator::make($request->only('name'), [
-            'name' => 'required|string|min:5|max:50'
+            'name' => 'required|string|min:5|max:50|unique:catagories,name'
         ])->validate();
 
         /* update in db */

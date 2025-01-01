@@ -15,7 +15,7 @@ class StoreImageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        dd(request()->file('avatar'));
+        dd(request()->all());
         return true;
     }
 

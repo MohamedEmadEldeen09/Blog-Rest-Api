@@ -20,7 +20,7 @@ Route::get('/test', function (Channel $channel) {
 /* user profile */
 Route::controller(UserProfileController::class)
     ->prefix('/user/profile')
-    ->middleware(['auth:sanctum'])
+    ->middleware(['auth:user']) //only the uer can update his profile the admin not allowed
     ->group(function () {
         Route::get('/', 'profile')->name('profile.profile');
         Route::post('/image', 'uplaodProfileImage')->name('profile.image-upload');

@@ -23,7 +23,7 @@ class VerifyEmailController extends Controller
         }
 
         return response([
-            "message" => "email verified successfully."
+            "message" => "Email verified successfully."
         ], 200);
     }
 }

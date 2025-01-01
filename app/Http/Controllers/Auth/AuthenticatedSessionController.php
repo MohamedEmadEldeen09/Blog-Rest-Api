@@ -22,12 +22,10 @@ class AuthenticatedSessionController extends Controller
 
         $token = $user->createToken('user')->plainTextToken;
 
-        $resData = [
+        return response([
+            "token" => $token,
             "user" => new UserResource($user),
-            "token" => $token
-        ];
-
-        return response($resData, 200);
+        ], 200);
     }
 
     /**

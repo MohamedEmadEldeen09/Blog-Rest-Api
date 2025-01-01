@@ -31,12 +31,6 @@ class BlogResource extends JsonResource
         }
 
         /* details routes */
-        // $isShowDetailedBlog = Route::currentRouteName() === "channel.blog.show";
-        // if($isShowDetailedBlog){
-        //     return $this->blogDetailsResource();
-        // }
-
-        /* details routes */
         return $this->blogDetailsResource();
     }
 
@@ -61,6 +55,8 @@ class BlogResource extends JsonResource
 
             'likes' => LikeResource::collection($this->likes),
 
+            'comments_count' => $this->comments()->count(),
+            
             'comments' => CommentResource::collection($this->comments),
 
             'channel' => new ChannelResource($this->channel)
@@ -80,7 +76,7 @@ class BlogResource extends JsonResource
 
             'created_at' => $this->created_at->format('Y-m-d'),
 
-            'user' => $this->whenLoaded('author', $this->author->name),
+            'author_name' => $this->author->name,
 
             'catagory' => new CatagoryResource($this->catagory),
 
@@ -88,9 +84,9 @@ class BlogResource extends JsonResource
 
             'likes_count' => $this->likes()->count(),
 
-            'comments' => $this->comments()->count(),
+            'comments_count' => $this->comments()->count(),
 
-            'channel' => new ChannelResource($this->whenLoaded('channel'))
+            'channel' => new ChannelResource($this->channel)
         ];
     }
 }

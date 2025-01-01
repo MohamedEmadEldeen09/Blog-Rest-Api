@@ -1,7 +1,6 @@
 <?php
 
-test('example', function () {
-    $response = $this->get('/');
-
+test('demo test', function () {
+    $response = $this->get('/api/channel');
     $response->assertStatus(200);
 });
