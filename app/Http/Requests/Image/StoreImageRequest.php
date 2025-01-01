@@ -34,8 +34,8 @@ class StoreImageRequest extends FormRequest
     public function failedValidation(Validator $validator){
         $errors = $validator->errors();
 
-        $response = response()->json([
-            'errors' => $errors->messages(),
+        $response = response([
+            'errors' => $errors->messages()
         ], 422);
 
         throw new HttpResponseException($response);

@@ -1,22 +1,11 @@
 <?php
 
-/**
- * For Admin
- * - admin can see the channel blog even if he is not subscribed to this channel
- */
-
 use App\Models\Admin;
 use App\Models\Blog;
 use App\Models\Catagory;
 use App\Models\Channel;
 use App\Models\User;
 
-/**
- * Show method Test Cases
- * - if the channel is the main app channel so there is no need to auth
- * - but if not make sure that this user is subscribed to that channel to see this blog 
- * - response json -->> body - status code
- */
 
 it('admin can see the blog even he is not subscribed to this channel', function () {
     $user = User::factory()->create();
@@ -40,7 +29,7 @@ it('admin can see the blog even he is not subscribed to this channel', function 
         'blog' => $channel->blogs()->first()->id
     ]));
 
-    $response->assertOk(200);
+    $response->assertOk();
 });
 
 it('can see specific response body' , function () {

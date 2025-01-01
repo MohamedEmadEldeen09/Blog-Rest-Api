@@ -37,10 +37,9 @@ class StoreBlogRequest extends FormRequest
 
     public function failedValidation(Validator $validator){
         $errors = $validator->errors();
-
-        $response = response()->json([
-            'message' => 'Invalid data send',
-            'details' => $errors->messages(),
+        
+        $response = response([
+            'errors' => $errors->messages()
         ], 422);
 
         throw new HttpResponseException($response);

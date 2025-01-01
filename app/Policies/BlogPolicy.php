@@ -76,13 +76,18 @@ class BlogPolicy
      */
     public function create(User $user, Channel $channel): bool
     {
+        /* if the channel is the main app channel the user can create the blog */
         if($channel->name === AppConstantsEnum::MAIN_APP_CHANNEL_NAME->value){    
             return true;
         }
         
-        return $channel->subscribers()->where('user_id', $user->id)->exists()
-            ? true
-            : throw new UnAuthorizedToMakeActionMyException('You must be subscribed to the channel to create a blog.');
+        /* if the user is the owner of this channel he can create the blog */
+        if($channel->user_id == $user->id) return true;
+
+        /* or if the user is subscribed to this channel he can create the blog */
+        if($channel->subscribers()->where('user_id', $user->id)->exists()) return true;
+        
+        throw new UnAuthorizedToMakeActionMyException('You must be subscribed to the channel to create a blog.');
     }
 
     /**
