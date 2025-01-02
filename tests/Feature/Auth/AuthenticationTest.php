@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-//use Laravel\Sanctum\Sanctum;
 
 test('users can authenticate using the login screen', function () {
     $user = User::factory()->create();
@@ -28,71 +27,19 @@ test('users can not authenticate with invalid password', function () {
 });
 
 test('users can logout', function () {
-    /*
+    /* create a random user */
     $user = User::factory()->create();
-    $response = $this->actingAs($user)->post(route('logout'));
-    $this->assertGuest();
+
+    /* first lets log the user in and get the token */
+    $token = $user->createToken("secret_for_" . $user->email)->plainTextToken;
+
+    /* check if the user realy logged in */
+    $response = $this->withToken($token)->getJson(route('profile.profile'))->assertSuccessful();
+    $response->assertJsonFragment(['name' => $user->name]);
+
+    /* log out the user */
+    $response = $this->withToken($token)->post(route('logout'));
+
+    /* check if the response is 204 so the user logged out successfully*/
     $response->assertNoContent();
-    //$response->assertUnauthorized();
-    //$response->assertServerError();
-    */
-
-    
-    // $user = User::factory()->create();
-
-    // $response = $this->post(route('login'), [
-    //     'email' => $user->email,
-    //     'password' => 'password',
-    // ]);
-
-    //$token = $response->json()['token'];
-
-    // $headers = [
-    //     //'Accept' => 'application/json',
-    //     //'Content-Type' => 'application/json',
-    //     //'Authorization' => 'Bearer ' . $user->createToken('test')->plainTextToken,
-    //     'Authorization' => 'Bearer ' . $token->plainTextToken,
-    // ];
-
-
-    //$this->post(route('logout'), [], $headers)->assertNoContent();
-
-    // $this->assertAuthenticated();
-
-    // $token =json_decode($response->getContent())->token;
-
-    // //$token = $user->tokens()->first()->plainTextToken;
-
-    // $headers = [
-    //     'Accept' => 'application/json',
-    //     //'Content-Type' => 'application/json',
-    //     //'Authorization' => 'Bearer ' . $user->createToken('test')->plainTextToken,
-    //     'Authorization' => 'Bearer ' . $token,
-    // ];
-
-    // $response2 = $this->post(route('logout'), [], $headers);
-
-    // $response2->assertNoContent();
-
-    // $this->assertGuest('web');
-
-    /*
-    // Create a user
-    $user = User::factory()->create();
-
-    // Authenticate the user using Sanctum
-    Sanctum::actingAs($user, ['*']);
-
-    // Ensure the user is authenticated
-    $this->assertAuthenticatedAs($user);
-
-    // Make a POST request to the logout endpoint
-    $response = $this->postJson('/api/logout');
-
-    // Assert the response status is 204 No Content
-    $response->assertStatus(204);
-
-    // Assert the user is logged out
-    $this->assertGuest();
-    */
 });

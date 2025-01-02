@@ -43,5 +43,8 @@ expect()->extend('toBeOne', function () {
 
 function something()
 {
-    // ..
+
 }
+
+/* make a custom function that actingAsAdmin */
+

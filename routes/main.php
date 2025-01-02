@@ -13,9 +13,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/test', function (Channel $channel) {
-    return response(['message' => 'welcome '. request()->user('sanctum')->name]);
-})->middleware(['auth:user']);
+// Route::get('/test', function (Channel $channel) {
+//     return response(['message' => 'welcome '. request()->user('sanctum')->name]);
+// })->middleware(['auth:user']);
 
 /* user profile */
 Route::controller(UserProfileController::class)

@@ -132,7 +132,7 @@ class BlogController extends Controller implements HasMiddleware
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( Channel $channel, Blog $blog)
+    public function destroy(Channel $channel, Blog $blog)
     {
         /* check if the user is authorized to delete the blog */
         Gate::authorize('delete', $blog);
@@ -140,7 +140,7 @@ class BlogController extends Controller implements HasMiddleware
 
         $blog->delete();
 
-        return response()->json(['message' => 'Blog deleted successfully.'], 200);
+        return response()->noContent();
     }
 
     /* upload blog image*/

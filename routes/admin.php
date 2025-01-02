@@ -12,7 +12,9 @@ Route::post('/admin/login', [AuthenticatedSessionController::class, 'store'])
 /* main functionality */
 Route::middleware('auth:admin-api')->prefix('admin')->group(function () {
         /* welcome route to test */
-        Route::get('/', fn () => response('Hello '. request()->user('sanctum')->name));
+        Route::get('/', fn () => response([
+            'message' => 'Welcome ' . request()->user('sanctum')->name
+        ]))->name('admin.welcome');
 
         /* admin logout */
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])

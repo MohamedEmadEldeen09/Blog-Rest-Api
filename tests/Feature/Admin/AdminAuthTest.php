@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Admin;
-//use Laravel\Sanctum\Sanctum;
 
 test('admin can authenticate using the login screen', function () {
     $admin = Admin::factory()->create();
@@ -28,11 +27,19 @@ test('admins can not authenticate with invalid password', function () {
 });
 
 test('admins can logout', function () {
+    /* create an admin */
     $admin = Admin::factory()->create();
 
-    $response = $this->actingAs($admin, 'admin')->post(route('admin.logout'));
+    /* first lets log the admin in and get the token */
+    $token = $admin->createToken("secret_for_" . $admin->email)->plainTextToken;
 
-    $this->assertGuest();
+    /* check if the admin realy logged in */
+    $response = $this->withToken($token)->getJson(route('admin.welcome'))->assertSuccessful();
+    $response->assertJsonFragment(['message' => 'Welcome ' . $admin->name]);
 
+    /* log out the admin */
+    $response = $this->withToken($token)->postJson(route('admin.logout'));
+
+    /* check if the response is 204 so the admin logged out successfully*/
     $response->assertNoContent();
 });
