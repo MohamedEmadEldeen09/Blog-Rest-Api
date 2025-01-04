@@ -52,8 +52,7 @@ trait StoreImageTrait
 
     private function storeImageForBlog($data, $disk){
         try {
-            $blog = Blog::findOrFail($data['blog']);
-
+            $blog = $data['blog'];
             $image = $data['image'];
 
             $folderPath = 'blog/'.  $blog->id;

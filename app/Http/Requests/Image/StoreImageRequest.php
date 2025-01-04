@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests\Image;
 
-use App\Enums\ImageOwnerEnum;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rules\Enum;
 
 class StoreImageRequest extends FormRequest
 {
@@ -15,7 +13,6 @@ class StoreImageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        dd(request()->all());
         return true;
     }
 
@@ -27,7 +24,7 @@ class StoreImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'required|image',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 

@@ -16,18 +16,18 @@ class UserProfileController extends Controller
 
     protected $usedDisk = 'public';
 
-    /* get user profile info*/
+    /* get user profile info */
     public function profile () {
         return new UserResource(request()->user('sanctum')->with('image')->first());
     }
 
-    /* upload user profile image*/
+    /* upload user profile image */
     public function uplaodProfileImage(StoreImageRequest $request)
     {
         $validatedData = $request->validated();
-        //dd($validatedData);
-        $validatedData['imageable_type'] = 'user';
 
+        $validatedData['imageable_type'] = 'user';
+        
         $image = $this->storeImageFor($validatedData, $this->usedDisk);
         
         return response([
@@ -35,14 +35,14 @@ class UserProfileController extends Controller
         ], 201);
     }
 
-    /* change user profile image*/
+    /* change user profile image */
     public function changeProfileImage(StoreImageRequest $request, Image $image)
     {
         $this->deleteImageFrom($image);
         $this->uplaodProfileImage($request);
     }
 
-    /* delete user profile image*/
+    /* delete user profile image */
     public function deleteProfileImage(Image $image)
     {
         $this->deleteImageFrom($image);

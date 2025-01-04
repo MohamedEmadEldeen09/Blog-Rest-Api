@@ -11,7 +11,7 @@ require __DIR__.'/main.php';
 /* the admin routes */
 require __DIR__.'/admin.php';
 
-/* in case if a rout not found */
+/* in case if a rout is not found */
 Route::fallback(function(){
     return response()->json([
             'message' => 'Route Not Found.'

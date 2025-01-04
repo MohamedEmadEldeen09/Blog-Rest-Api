@@ -29,9 +29,8 @@ class StoreBlogRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],
             'catagory_id' => ['required', 'integer', 'exists:catagories,id'],
-            //'images' => ['required', 'array', 'sometimes'],
-            //'images.*' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-            //'image' => ['sometimes', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'images' => ['array', 'sometimes'],
+            'images.*' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ];
     }
 

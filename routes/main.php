@@ -6,16 +6,7 @@ use App\Http\Controllers\ChannelSubscribtoinController;
 use App\Http\Controllers\SearchAndFilterController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserProfileController;
-use App\Http\Resources\User\UserResource;
-use App\Models\Blog;
-use App\Models\Channel;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-// Route::get('/test', function (Channel $channel) {
-//     return response(['message' => 'welcome '. request()->user('sanctum')->name]);
-// })->middleware(['auth:user']);
 
 /* user profile */
 Route::controller(UserProfileController::class)
@@ -24,8 +15,8 @@ Route::controller(UserProfileController::class)
     ->group(function () {
         Route::get('/', 'profile')->name('profile.profile');
         Route::post('/image', 'uplaodProfileImage')->name('profile.image-upload');
-        Route::post('/image/{image}', 'changeProfileImage')->name('profile.image-change');
-        Route::post('/image/{image}', 'deleteProfileImage')->name('profile.image-delete');
+        Route::put('/image/{image}', 'changeProfileImage')->name('profile.image-change');
+        Route::delete('/image/{image}', 'deleteProfileImage')->name('profile.image-delete');
     });
 
 
@@ -58,7 +49,15 @@ Route::controller(ChannelSubscribtoinController::class)
 
 /* blog */
 Route::scopeBindings()->group(function () {
+        /* main functionality of the CRUD operations */
         Route::apiResource('channel.blog', BlogController::class);
+        
+        /* blog image */
+        Route::put('/channel/{channel}/blog/{blog}/image/{image}', 
+            [BlogController::class, 'updateBlogImage'])->name('channel.blog.image-update');
+
+        Route::delete('/channel/{channel}/blog/{blog}/image/{image}', 
+            [BlogController::class, 'deleteBlogImage'])->name('channel.blog.image-delete');
     });
 
 
@@ -70,23 +69,4 @@ Route::controller(SearchAndFilterController::class)
             ->name('channel.blog.trending');
     });
 
-
-
-//seed the db -->> done
-//customize the authentiction --> done
-//handle erros -->> done
-//channel crud -->> done
-//authorization using policy -->> done
-//channel subscribtion -->> done
-//user dashboard -->> done
-//blog crud -->> done
-//search + filter -->> done
-//admin layer with abilities muti auth -->> done
-
-
-//image crud 
-//blog actions -->> report a blog to the admin as a notificatoin trigered by an event
-//send notificatoin the channel subscribers throght email when new blog created 
-//testig endPoints
-//solve pagination problem that it is not showing in the resource response
 

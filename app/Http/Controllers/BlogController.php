@@ -15,6 +15,7 @@ use App\Models\Image;
 use App\Traits\DeleteImageTrait;
 use App\Traits\StoreImageTrait;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Gate;
@@ -74,8 +75,9 @@ class BlogController extends Controller implements HasMiddleware
      */
     public function store(StoreBlogRequest $request, Channel $channel)
     {
+        //return response()->json($request->all());
         $validated = $request->validated();
-
+        //return response()->json($validated);
         $blog = Blog::create([
             'title' => $validated['title'],
             'content' => $validated['content'],
@@ -85,10 +87,9 @@ class BlogController extends Controller implements HasMiddleware
         ]);
 
         /* save the blog images */
-         /* save the blog images */
-        // foreach ($validated['images'] as $image) {
-        //     $this->uplaodBlogImage($blog, $image);
-        // }
+        foreach ($validated['images'] as $image) {
+            $this->uplaodBlogImage($blog, $image);
+        }
 
         /* send new blog published emails */
         NewBlogPublishedEvent::dispatch($blog);
@@ -120,9 +121,7 @@ class BlogController extends Controller implements HasMiddleware
         $validated = $request->validated();
 
         $blog->update($validated);
-        
-        /* save the blog images */
-        
+
         return response()->json([
             'message' => 'Blog updated successfully.',
             'blog' => new BlogResource($blog)
@@ -157,10 +156,15 @@ class BlogController extends Controller implements HasMiddleware
     {
         $this->deleteImageFrom($image);
         $this->uplaodBlogImage($blog, $image);
+
+        return response()->json([
+            'message' => 'Blog image upadated successfully.',
+            'blog' => new BlogResource($blog)
+        ], 201);
     }
 
     /* delete blog image*/
-    public function deleteBlogImage(Image $image)
+    public function deleteBlogImage(Channel $channel, Blog $blog, Image $image)
     {
         $this->deleteImageFrom($image);
         return response(null, 204); 
