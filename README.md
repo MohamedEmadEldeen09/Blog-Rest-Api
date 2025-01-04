@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Blog API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Installation
 
-## About Laravel
+To install this project, follow these steps:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/your-repo.git
+    cd your-repo
+    ```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. **Install dependencies:**
+    ```bash
+    composer install
+    npm install
+    ```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. **Create a copy of the `.env` file:**
+    ```bash
+    cp .env.example .env
+    ```
 
-## Learning Laravel
+4. **Generate an application key:**
+    ```bash
+    php artisan key:generate
+    ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5. **Run the migrations:**
+    ```bash
+    php artisan migrate
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+6. **Serve the application:**
+    ```bash
+    php artisan serve
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+7. **Start the queue worker:**
+    ```bash
+    php artisan queue:work
+    ```
 
-## Laravel Sponsors
+8. **Run the tests:**
+    ```bash
+    php artisan test
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## .env File
 
-### Premium Partners
+You need to create a `.env` file in the root directory of your project. This file should contain all the configuration settings that are present in the `.env.example` file. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Notes
+- All the endpoints start with /api for example "http://localhost:8000/api/channel".
+- apiResource means all the crud operations for example the channel routes: 
+  - `GET  http://localhost:8000/api/channel`: Read all the channels
+  - `GET  http://localhost:8000/api/channel/235`: Read the channel with id 235
+  - `POST  http://localhost:8000/api/channel`: Create a new channel
+  - `PATCH  http://localhost:8000/api/channel/235`: Update the channel with id 235
+  - `DELETE  http://localhost:8000/api/channel/235`: Delete the channel with id 235
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Routes
 
-## Code of Conduct
+### Admin Routes
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Defined in [admin.php]:
 
-## Security Vulnerabilities
+- `POST /admin/login`: Admin login route. Requires guest middleware and throttling.
+- `GET /admin`: Welcome route for authenticated admins.
+- `POST /admin/logout`: Admin logout route.
+- `apiResource /admin/catagory`: CRUD operations for categories, accessible only to authenticated admins.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Authentication Routes
 
-## License
+Defined in [auth.php]:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- `POST /register`: Register a new user. Requires guest middleware and throttling.
+- `POST /login`: User login route. Requires guest middleware and throttling.
+- `POST /forgot-password`: Request a password reset link. Requires guest middleware.
+- `POST /reset-password`: Reset the password using a valid token. Requires guest middleware.
+- `GET /verify-email/{id}/{hash}`: Verify the user's email address. Requires authentication, signed URL, and throttling.
+- `POST /email/verification-notification`: Resend the email verification notification. Requires authentication and throttling.
+- `POST /logout`: User logout route. Requires authentication.
+- `GET /user`: Get the authenticated user's details. Requires authentication.
+
+### Main Routes
+
+Defined in [main.php]:
+
+- **User Dashboard Routes:**
+  - `GET /user/dashboard/own-channels`: Retrieve the channels owned by the user. Requires `auth:sanctum` middleware.
+  - `GET /user/dashboard/subscribed-channels`: Retrieve the channels the user is subscribed to. Requires `auth:sanctum` middleware.
+  - `GET /user/dashboard/blogs`: Retrieve the blogs created by the user. Requires `auth:sanctum` middleware.
+
+- **User Profile Routes:**
+  - `GET /user/profile`: Retrieve the user's profile. Requires `auth:user` middleware.
+  - `POST /user/profile/image`: Upload a new profile image. Requires `auth:user` middleware.
+  - `PUT /user/profile/image/{image}`: Change the user's profile image. Requires `auth:user` middleware.
+  - `DELETE /user/profile/image/{image}`: Delete the user's profile image. Requires `auth:user` middleware.
+
+- **Channel Routes:**
+  - `apiResource /channel`: CRUD operations for channels require authentication on some endpoints.
+
+- **Channel Subscription Routes:**
+  - `POST /channel/{channel}/subscribe`: Subscribe to a channel. Requires authentication, verification, and authorization to subscribe to the channel.
+  - `POST /channel/{channel}/unsubscribe`: Unsubscribe from a channel. Requires authentication, verification, and authorization to unsubscribe from the channel.
+
+- **Blog Routes:**
+  - `apiResource /channel.blog`: CRUD operations for blogs within a channel. Requires authentication and verification.
+  - `PUT /channel/{channel}/blog/{blog}/image/{image}`: Update the image of a specific blog within a channel. Requires authentication and verification.
+  - `DELETE /channel/{channel}/blog/{blog}/image/{image}`: Delete the image of a specific blog within a channel. Requires authentication and verification.
+
+- **Filter Routes:**
+  - `GET /channel/{channel}/blog/trending`: To get the tending blog
+
+### Fallback Route
+
+Defined in [api.php]:
+
+- `Fallback`: Returns a 404 JSON response if a route is not found.
