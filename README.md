@@ -53,7 +53,7 @@ You need to create a `.env` file in the root directory of your project. This fil
 ## Notes
 - All the endpoints start with /api for example "http://localhost:8000/api/channel".
 
-- I provided a Postman collection file "Blog RestFul Api.postman_collection" to test all the endpoints on the Postman.
+- I provided a Postman collection file "Blog RestFul Api.postman_collection" to test all the endpoints on the Postman so you can import it your postman.
 
 - I provided a tow files in the folder "file-upload-examples" to test the file image upload.
 
