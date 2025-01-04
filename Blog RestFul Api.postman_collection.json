@@ -1,0 +1,2957 @@
+{
+	"info": {
+		"_postman_id": "36d18abf-43c5-43d6-a4b9-a50174bce053",
+		"name": "Blog RestFul Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27277737"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "resgister",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"mohamed\",\r\n    \"email\": \"moh@gmail.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@example.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "email verificatoin notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|ySMWmOUYcHNRVPlmOG1BIzwlk6eZWoiOYLeXSdNTca5a02a4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"moh@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/email/verification-notification",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"email",
+								"verification-notification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifiy email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|ySMWmOUYcHNRVPlmOG1BIzwlk6eZWoiOYLeXSdNTca5a02a4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 4|ySMWmOUYcHNRVPlmOG1BIzwlk6eZWoiOYLeXSdNTca5a02a4",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/verify-email/67/73ac5dcdbc8920c79da6ac023dad34f08809b8ac?expires=1735187317&signature=b8f49fc96ebcbb970233592f74a398e1b61b5792869b50cecf8e017cbe10e451",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"verify-email",
+								"67",
+								"73ac5dcdbc8920c79da6ac023dad34f08809b8ac"
+							],
+							"query": [
+								{
+									"key": "expires",
+									"value": "1735187317"
+								},
+								{
+									"key": "signature",
+									"value": "b8f49fc96ebcbb970233592f74a398e1b61b5792869b50cecf8e017cbe10e451"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget password email notification",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"moh@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/forgot-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password when forgot",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"b5d87b893d591f0ca3207a5b6affb0acccd947e6b0fac4d6c16efa24fab3e4eb\",\r\n    \"email\": \"moh@gmail.com\",\r\n    \"password\": \"password_2\",\r\n    \"password_confirmation\": \"password_2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "blog",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|GQILjdVa8eJkfBdJxnCWARiHiJzJcmojjsVBkesQ36605dfe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 10|GQILjdVa8eJkfBdJxnCWARiHiJzJcmojjsVBkesQ36605dfe",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data; boundary=<calculated when request is sent>",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "How to learn the Backend Development",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "First of all if you choosed the php stach you should learn the laravel frameword well.",
+									"type": "text"
+								},
+								{
+									"key": "catagory_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/channel/427/blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"427",
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|wNRcp8ZSycIuJYADfbb7oUnEJwd3pG1qUKrQqrFl08d86a46",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XSRF-TOKEN=eyJpdiI6InBmNXl5MjFwdDEvVzh5YXV3VFFKL1E9PSIsInZhbHVlIjoic0s4bXhicU40TFNIYnpBb2t5ZmY0V3FselhzY3RoT3dCMUJJMEZUdjViNWlBWWhiTHhTSzNQRXZKWnRYcHg3M1RCejROd0lLN05seGVVb3ZSOHB2cDBkMENCSDkwM1RxRUJhQTQ3NHpFTEF5NTFEcnE2dlh1b1V2WW1qZ1lNM1EiLCJtYWMiOiI1N2JiNTgwNzM4MmU5M2Q5MGFhNjQyNDQ3MzZkMDRmY2UxZTg4YTQwMmRhZjI0MjMwMGViOGQ2NmU1OWU5YmE5IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IjJoSENSRzdJbklJbk1GendRbUVDbGc9PSIsInZhbHVlIjoiYkNXbmV0ZFJmaGZjQlVkMWlCQU5TV0NCUXFIV3RITklUanlYQ3d6UlBIdFBUM0lPM2N3TkZ5SUVZbE42dlY1NTgzM3VYNW1tNVNxYzVXRFRQQ1d6TUV6aVlsbnRvSkhrOU9BdHpRK3M5WE92bmM3TVNTai96aHpwdnJJaWwyZkYiLCJtYWMiOiIwMDZmZGY1MmYzOTNjNDc4NjQ2ZWYzZTY0NTBhOWI1MDI3NDU5ZTY5MzMyZDMwNjg5MDdhMzAzNmRmOWY2NDI2IiwidGFnIjoiIn0%3D",
+								"name": "cookie",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel/427/blog/37548",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"427",
+								"blog",
+								"37548"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|GQILjdVa8eJkfBdJxnCWARiHiJzJcmojjsVBkesQ36605dfe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "XSRF-TOKEN=eyJpdiI6InBmNXl5MjFwdDEvVzh5YXV3VFFKL1E9PSIsInZhbHVlIjoic0s4bXhicU40TFNIYnpBb2t5ZmY0V3FselhzY3RoT3dCMUJJMEZUdjViNWlBWWhiTHhTSzNQRXZKWnRYcHg3M1RCejROd0lLN05seGVVb3ZSOHB2cDBkMENCSDkwM1RxRUJhQTQ3NHpFTEF5NTFEcnE2dlh1b1V2WW1qZ1lNM1EiLCJtYWMiOiI1N2JiNTgwNzM4MmU5M2Q5MGFhNjQyNDQ3MzZkMDRmY2UxZTg4YTQwMmRhZjI0MjMwMGViOGQ2NmU1OWU5YmE5IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IjJoSENSRzdJbklJbk1GendRbUVDbGc9PSIsInZhbHVlIjoiYkNXbmV0ZFJmaGZjQlVkMWlCQU5TV0NCUXFIV3RITklUanlYQ3d6UlBIdFBUM0lPM2N3TkZ5SUVZbE42dlY1NTgzM3VYNW1tNVNxYzVXRFRQQ1d6TUV6aVlsbnRvSkhrOU9BdHpRK3M5WE92bmM3TVNTai96aHpwdnJJaWwyZkYiLCJtYWMiOiIwMDZmZGY1MmYzOTNjNDc4NjQ2ZWYzZTY0NTBhOWI1MDI3NDU5ZTY5MzMyZDMwNjg5MDdhMzAzNmRmOWY2NDI2IiwidGFnIjoiIn0%3D",
+								"name": "cookie",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"laravel 11 pro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/channel/427/blog/37546",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"427",
+								"blog",
+								"37546"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel/427/blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"427",
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel/421/blog/37548",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"421",
+								"blog",
+								"37548"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trending",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel/421/blog/trending",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"421",
+								"blog",
+								"trending"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "channel",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel?channel_name=no&page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel"
+							],
+							"query": [
+								{
+									"key": "channel_name",
+									"value": "no"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept ",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel/419",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"419"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|usi7EGC6dChbg6loteGO5Fh8wM7OOUdpIBDVUseBa7732faa",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|usi7EGC6dChbg6loteGO5Fh8wM7OOUdpIBDVUseBa7732faa",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel/417",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"417"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|usi7EGC6dChbg6loteGO5Fh8wM7OOUdpIBDVUseBa7732faa",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|usi7EGC6dChbg6loteGO5Fh8wM7OOUdpIBDVUseBa7732faa",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Backend pro 9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/channel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "erhwvehwhwh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"MAIN APP CHANNEL\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/channel/355",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"355"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user dashboard",
+			"item": [
+				{
+					"name": "my own channels",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "XSRF-TOKEN=eyJpdiI6ImJXbmtyYWZ3OUlncUpQdkNWc2JUMUE9PSIsInZhbHVlIjoiZHMzVTZXQ3RqbGtHRzFuT3BtN2RXVmhrOHFXUnV2YWNxNWJ5L3hYSmc4S2dTN3JaUFpLVFpudFVCMWEyYy9oUjJmS2tneEEwR1E5b3U4RjB3clR2aDM2alowN2RHUWdzSlYyTjI2ZzNtWUo5SHNLVE9lMmQ0SHpDMlJzSElMK2siLCJtYWMiOiJjYmQyYjlmZGY4N2U3NzE4MDdjMDhhMjYzZWQyNWY4OTMwYTA1OGQ0M2E5NzZiYmEzNGUxNTgzNGY3M2ZjN2VlIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IjFVWjhBUjhTcjdhNk1NcTBUUjNQL3c9PSIsInZhbHVlIjoiSm5jQitjUTh2R0hLNHlhcG5pSlZ6MUlIdHA1N3d4ZWgxb0ZQTEc5clozUWx1TndrM090TFRWa3JLMWVGMlFLSHpFOFJhaG9Sd3hqQmdnN2JmL3pTWHRPaDlvRGFtOHdNTkZSVjlvUUlvckdLWXpUVlRCTDVOU2FWa2xaZkZ3cUciLCJtYWMiOiI2MWE1ZDg5MjhiYjY1NTAzZTMwZGRmMTBhMTYwNTRlNjUwMGM1ZTlmMzhlODQ2NTlmYTFmY2Y4M2UxYjI4NjczIiwidGFnIjoiIn0%3D",
+								"name": "cookie",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/user/dashboard/own-channels",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"dashboard",
+								"own-channels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my blogs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|GQILjdVa8eJkfBdJxnCWARiHiJzJcmojjsVBkesQ36605dfe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XSRF-TOKEN=eyJpdiI6ImJXbmtyYWZ3OUlncUpQdkNWc2JUMUE9PSIsInZhbHVlIjoiZHMzVTZXQ3RqbGtHRzFuT3BtN2RXVmhrOHFXUnV2YWNxNWJ5L3hYSmc4S2dTN3JaUFpLVFpudFVCMWEyYy9oUjJmS2tneEEwR1E5b3U4RjB3clR2aDM2alowN2RHUWdzSlYyTjI2ZzNtWUo5SHNLVE9lMmQ0SHpDMlJzSElMK2siLCJtYWMiOiJjYmQyYjlmZGY4N2U3NzE4MDdjMDhhMjYzZWQyNWY4OTMwYTA1OGQ0M2E5NzZiYmEzNGUxNTgzNGY3M2ZjN2VlIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IjFVWjhBUjhTcjdhNk1NcTBUUjNQL3c9PSIsInZhbHVlIjoiSm5jQitjUTh2R0hLNHlhcG5pSlZ6MUlIdHA1N3d4ZWgxb0ZQTEc5clozUWx1TndrM090TFRWa3JLMWVGMlFLSHpFOFJhaG9Sd3hqQmdnN2JmL3pTWHRPaDlvRGFtOHdNTkZSVjlvUUlvckdLWXpUVlRCTDVOU2FWa2xaZkZ3cUciLCJtYWMiOiI2MWE1ZDg5MjhiYjY1NTAzZTMwZGRmMTBhMTYwNTRlNjUwMGM1ZTlmMzhlODQ2NTlmYTFmY2Y4M2UxYjI4NjczIiwidGFnIjoiIn0%3D",
+								"name": "cookie",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/user/dashboard/blogs?page=171",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"dashboard",
+								"blogs"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "171"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my subscribed channels",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XSRF-TOKEN=eyJpdiI6ImxTbzdhTVF2ckIwTkp1MUdFMGZ5eHc9PSIsInZhbHVlIjoiZnBEVUhjWlp0c0o2Ly9UT2xub2NUdlRIaWMrdmdzYTN2eHdaWHh4cWYxZ0E0WjhrUzR5QkVRdjdITkVZSjhIckhUdWNsTW1CdHJQN3l1MTdZKzZibStFNXVYOGs0VGdRKzVhcFJrdTNjeCt4OXVOQXZjTmYxT0tWcW0xNWNmMVAiLCJtYWMiOiIyZWZjNWM3MjQ1OGM4OTk4YmNhMmQxYWU4MjhkNWU5MmU5MmRhMzE3OTVmN2Y0NTg0YTFiMmE5YWUwNDVlMDhlIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6Ik1SVk1sSUhsbk5YQjhpakhUay9yWHc9PSIsInZhbHVlIjoiNktNVm1kL1hMYTZXWHhheCt0QkhUNm5ZN2dna1JRTjIzK0kyTm5pLzdPbmJ1WGlmcHVabWM3UnBYU3ZWWjZySTJUd25nemVmWFJzeHgrdDBLNW50SkhPbE80MDNHZGtsREhodEtyRjlNbmdrQ1l6TlNUaE9SakFBdWxINXMwYjIiLCJtYWMiOiJkMmQ5ZjJlNjFmYzE4YzM5NTUxMjcwNTViYzkxNTU0NzBjMDE5ODJjZWVjM2FhOTNhY2EwOTQwMWVlNWY2N2U1IiwidGFnIjoiIn0%3D",
+								"name": "cookie",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/user/dashboard/subscribed-channels",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"dashboard",
+								"subscribed-channels"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user profile",
+			"item": [
+				{
+					"name": "info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XSRF-TOKEN=eyJpdiI6IkwvaVBQTVFBVXlwZFRMU1MwTGkxbEE9PSIsInZhbHVlIjoiakRDQXRGTlZJY05PZ3VjaERLK3N5VFJ5N09aTVpWL0RCc3diSHNod3R6M2ZsTkhwQWVObzlCT3dTV1d3Qkp4c2ZFL3ZWdmhKK2RZRUVFSktGa1JSTDVRVlpFT2Rwdkw5ZUZWc1dWaDl1ZGdoSWZMZ0lqZW5OM0doTURNS09sb0UiLCJtYWMiOiIwN2FlYTUwZTM5MWM1NTE2MDkzMTY1Mjc4NDdmM2NlZTU0MmM0NjEzYWMyMDI5MDk3YTAxZDBiMDAyNGRkM2EzIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IjRNYlVRa0FDS2tFemViL3JwYnBZdXc9PSIsInZhbHVlIjoid01VUzJqeW95eUZLdVdkWDNOQzAyRnlyeTBqdzlIQmd5Y0cvdUNZWDlnejdiNnBBR1JxV2xZT3l4MTkvSlQwcld4NzhZdXVsMWIraGNEQ1pSQjhYbkxJak1BR2trcHQvbi9MSGFnMy90VnVwWllrbHpyR09OQ2toTEl4NU1WL28iLCJtYWMiOiJkZGJhZDg0YTkwMDc4NDJlODNiMTQ1ZWFiYmI4MjBkNzdkOTczZTNjOGE5YzQ1YzdiYThhNTg0NmI2YjBmMmE2IiwidGFnIjoiIn0%3D",
+								"name": "cookie",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/user/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "channel subscribtoin",
+			"item": [
+				{
+					"name": "subscribe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "XSRF-TOKEN=eyJpdiI6ImJXbmtyYWZ3OUlncUpQdkNWc2JUMUE9PSIsInZhbHVlIjoiZHMzVTZXQ3RqbGtHRzFuT3BtN2RXVmhrOHFXUnV2YWNxNWJ5L3hYSmc4S2dTN3JaUFpLVFpudFVCMWEyYy9oUjJmS2tneEEwR1E5b3U4RjB3clR2aDM2alowN2RHUWdzSlYyTjI2ZzNtWUo5SHNLVE9lMmQ0SHpDMlJzSElMK2siLCJtYWMiOiJjYmQyYjlmZGY4N2U3NzE4MDdjMDhhMjYzZWQyNWY4OTMwYTA1OGQ0M2E5NzZiYmEzNGUxNTgzNGY3M2ZjN2VlIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IjFVWjhBUjhTcjdhNk1NcTBUUjNQL3c9PSIsInZhbHVlIjoiSm5jQitjUTh2R0hLNHlhcG5pSlZ6MUlIdHA1N3d4ZWgxb0ZQTEc5clozUWx1TndrM090TFRWa3JLMWVGMlFLSHpFOFJhaG9Sd3hqQmdnN2JmL3pTWHRPaDlvRGFtOHdNTkZSVjlvUUlvckdLWXpUVlRCTDVOU2FWa2xaZkZ3cUciLCJtYWMiOiI2MWE1ZDg5MjhiYjY1NTAzZTMwZGRmMTBhMTYwNTRlNjUwMGM1ZTlmMzhlODQ2NTlmYTFmY2Y4M2UxYjI4NjczIiwidGFnIjoiIn0%3D",
+								"name": "cookie",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel/437/subscribe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"437",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unsubscribe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 7|fvQnyAoQtfBKZoWodm9tNqfWoXGDqCG9F7ZwndVB139c28d1",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/channel/438/unsubscribe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"channel",
+								"438",
+								"unsubscribe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"name": "cache-control",
+										"type": "text"
+									},
+									{
+										"key": "Postman-Token",
+										"value": "<calculated when request is sent>",
+										"name": "postman-token",
+										"type": "text"
+									},
+									{
+										"key": "Content-Length",
+										"value": "0",
+										"name": "content-length",
+										"type": "text"
+									},
+									{
+										"key": "Host",
+										"value": "<calculated when request is sent>",
+										"name": "host",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "PostmanRuntime/7.39.1",
+										"name": "user-agent",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"name": "accept",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Encoding",
+										"value": "gzip, deflate, br",
+										"name": "accept-encoding",
+										"type": "text"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive",
+										"name": "connection",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "applicatoin/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin_2025\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "8|GOAVkMsfGmerm1vzktuSbt8tRrsqtKFdFzuDFr3i4d98ba18",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"name": "cache-control",
+										"type": "text"
+									},
+									{
+										"key": "Postman-Token",
+										"value": "<calculated when request is sent>",
+										"name": "postman-token",
+										"type": "text"
+									},
+									{
+										"key": "Content-Length",
+										"value": "0",
+										"name": "content-length",
+										"type": "text"
+									},
+									{
+										"key": "Host",
+										"value": "<calculated when request is sent>",
+										"name": "host",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "PostmanRuntime/7.39.1",
+										"name": "user-agent",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"name": "accept",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Encoding",
+										"value": "gzip, deflate, br",
+										"name": "accept-encoding",
+										"type": "text"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive",
+										"name": "connection",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "applicatoin/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/admin/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "catagory",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "9|wNRcp8ZSycIuJYADfbb7oUnEJwd3pG1qUKrQqrFl08d86a46",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"name": "cache-control",
+										"type": "text"
+									},
+									{
+										"key": "Postman-Token",
+										"value": "<calculated when request is sent>",
+										"name": "postman-token",
+										"type": "text"
+									},
+									{
+										"key": "Host",
+										"value": "<calculated when request is sent>",
+										"name": "host",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "PostmanRuntime/7.39.1",
+										"name": "user-agent",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"name": "accept",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Encoding",
+										"value": "gzip, deflate, br",
+										"name": "accept-encoding",
+										"type": "text"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive",
+										"name": "connection",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/admin/catagory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"catagory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "9|wNRcp8ZSycIuJYADfbb7oUnEJwd3pG1qUKrQqrFl08d86a46",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"name": "cache-control",
+										"type": "text"
+									},
+									{
+										"key": "Postman-Token",
+										"value": "<calculated when request is sent>",
+										"name": "postman-token",
+										"type": "text"
+									},
+									{
+										"key": "Host",
+										"value": "<calculated when request is sent>",
+										"name": "host",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "PostmanRuntime/7.39.1",
+										"name": "user-agent",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"name": "accept",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Encoding",
+										"value": "gzip, deflate, br",
+										"name": "accept-encoding",
+										"type": "text"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive",
+										"name": "connection",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/admin/catagory/11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"catagory",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "9|wNRcp8ZSycIuJYADfbb7oUnEJwd3pG1qUKrQqrFl08d86a46",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 9|wNRcp8ZSycIuJYADfbb7oUnEJwd3pG1qUKrQqrFl08d86a46",
+										"name": "authorization",
+										"type": "text"
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"name": "cache-control",
+										"type": "text"
+									},
+									{
+										"key": "Postman-Token",
+										"value": "<calculated when request is sent>",
+										"name": "postman-token",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"name": "content-type",
+										"type": "text"
+									},
+									{
+										"key": "Content-Length",
+										"value": "<calculated when request is sent>",
+										"name": "content-length",
+										"type": "text"
+									},
+									{
+										"key": "Host",
+										"value": "<calculated when request is sent>",
+										"name": "host",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "PostmanRuntime/7.39.1",
+										"name": "user-agent",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"name": "accept",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Encoding",
+										"value": "gzip, deflate, br",
+										"name": "accept-encoding",
+										"type": "text"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive",
+										"name": "connection",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Healthy_2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/admin/catagory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"catagory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "9|wNRcp8ZSycIuJYADfbb7oUnEJwd3pG1qUKrQqrFl08d86a46",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"name": "cache-control",
+										"type": "text"
+									},
+									{
+										"key": "Postman-Token",
+										"value": "<calculated when request is sent>",
+										"name": "postman-token",
+										"type": "text"
+									},
+									{
+										"key": "Content-Length",
+										"value": "0",
+										"name": "content-length",
+										"type": "text"
+									},
+									{
+										"key": "Host",
+										"value": "<calculated when request is sent>",
+										"name": "host",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "PostmanRuntime/7.39.1",
+										"name": "user-agent",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"name": "accept",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Encoding",
+										"value": "gzip, deflate, br",
+										"name": "accept-encoding",
+										"type": "text"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive",
+										"name": "connection",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Healthy\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/admin/catagory/11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"catagory",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "destroy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "9|wNRcp8ZSycIuJYADfbb7oUnEJwd3pG1qUKrQqrFl08d86a46",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"name": "cache-control",
+										"type": "text"
+									},
+									{
+										"key": "Postman-Token",
+										"value": "<calculated when request is sent>",
+										"name": "postman-token",
+										"type": "text"
+									},
+									{
+										"key": "Host",
+										"value": "<calculated when request is sent>",
+										"name": "host",
+										"type": "text"
+									},
+									{
+										"key": "User-Agent",
+										"value": "PostmanRuntime/7.39.1",
+										"name": "user-agent",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*",
+										"name": "accept",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Encoding",
+										"value": "gzip, deflate, br",
+										"name": "accept-encoding",
+										"type": "text"
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive",
+										"name": "connection",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/admin/catagory/13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"catagory",
+										"13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "welcome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|GOAVkMsfGmerm1vzktuSbt8tRrsqtKFdFzuDFr3i4d98ba18",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "applicatoin/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/admin/welcome",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"welcome"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

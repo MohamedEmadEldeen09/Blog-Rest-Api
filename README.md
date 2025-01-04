@@ -1,4 +1,4 @@
-# Blog API
+# Blog RestFul API
 
 ## Installation
 
@@ -52,6 +52,15 @@ You need to create a `.env` file in the root directory of your project. This fil
 
 ## Notes
 - All the endpoints start with /api for example "http://localhost:8000/api/channel".
+
+- I provided a Postman collection file "Blog RestFul Api.postman_collection" to test all the endpoints on the Postman.
+
+- I provided a tow files in the folder "file-upload-examples" to test the file image upload.
+
+- When you test the file uplaod like the user profile image upload use the formdata in the    frontend so provided to example files using vue.js you can use react.js as you like it is the same thing with different syntax also adjust these two variables in the .env file
+FRONTEND_URL=http://localhost:3000 -->> or you can use a different port as you like 
+SANCTUM_STATEFUL_DOMAINS=http://localhost:3000 -->> or you can use a different port as you like.
+
 - apiResource means all the crud operations for example the channel routes: 
   - `GET  http://localhost:8000/api/channel`: Read all the channels
   - `GET  http://localhost:8000/api/channel/235`: Read the channel with id 235
@@ -59,6 +68,15 @@ You need to create a `.env` file in the root directory of your project. This fil
   - `PATCH  http://localhost:8000/api/channel/235`: Update the channel with id 235
   - `DELETE  http://localhost:8000/api/channel/235`: Delete the channel with id 235
 
+- If a route require authenticatoin do not forget to add Authorizatoin: 'Bearer {$token}' to the header in the postman
+
+- If a route does not work right do not forget to add to the header 
+Accept: 'application/json'
+Content-Type: 'application/json'
+
+- To test the authenticatoin routes that exist in the file auth.php you do not need to frontend app url to redirect so just adjust the frontend port to the same port of the backend server in the .env file to like 
+FRONTEND_URL=http://localhost:8000
+SANCTUM_STATEFUL_DOMAINS=http://localhost:8000
 
 ## Routes
 
