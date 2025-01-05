@@ -2,7 +2,7 @@
 
 ## ERD
 
-![ERD](ERD.drawio)
+![ERD](ERD.png)
 
 ## Installation
 

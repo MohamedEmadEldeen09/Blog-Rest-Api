@@ -17,6 +17,7 @@ auth.json
 npm-debug.log
 yarn-error.log
 content_learning.txt
+ERD.drawio
 /.fleet
 /.idea
 /.nova
