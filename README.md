@@ -1,5 +1,9 @@
 # Blog RestFul API
 
+## ERD
+
+![ERD](ERD.png)
+
 ## Installation
 
 To install this project, follow these steps:
